@@ -1,51 +1,148 @@
 import * as React from "react";
-import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { ChevronDown } from "lucide-react";
-
 import { cn } from "@/lib/utils";
 
-const Accordion = AccordionPrimitive.Root;
+interface AccordionContextType {
+  activeItems: string[];
+  toggleItem: (value: string) => void;
+}
 
-const AccordionItem = React.forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Item>,
-  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
->(({ className, ...props }, ref) => (
-  <AccordionPrimitive.Item ref={ref} className={cn("border-b", className)} {...props} />
-));
-AccordionItem.displayName = "AccordionItem";
+const AccordionContext = React.createContext<AccordionContextType | null>(null);
 
-const AccordionTrigger = React.forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
-  <AccordionPrimitive.Header className="flex">
-    <AccordionPrimitive.Trigger
-      ref={ref}
-      className={cn(
-        "flex flex-1 items-center justify-between py-4 text-sm font-medium cursor-pointer transition-all hover:underline text-left [&[data-state=open]>svg]:rotate-180",
-        className,
-      )}
-      {...props}
-    >
-      {children}
-      <ChevronDown className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200" />
-    </AccordionPrimitive.Trigger>
-  </AccordionPrimitive.Header>
-));
-AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName;
+interface AccordionItemContextType {
+  value: string;
+  isOpen: boolean;
+}
 
-const AccordionContent = React.forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>
->(({ className, children, ...props }, ref) => (
-  <AccordionPrimitive.Content
-    ref={ref}
-    className="overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
-    {...props}
-  >
-    <div className={cn("pb-4 pt-0", className)}>{children}</div>
-  </AccordionPrimitive.Content>
-));
-AccordionContent.displayName = AccordionPrimitive.Content.displayName;
+const AccordionItemContext = React.createContext<AccordionItemContextType | null>(null);
 
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };
+export interface AccordionProps extends React.HTMLAttributes<HTMLDivElement> {
+  type?: "single" | "multiple";
+  collapsible?: boolean;
+  defaultValue?: string | string[];
+  value?: string | string[];
+  onValueChange?: (value: string | string[]) => void;
+}
+
+export function Accordion({
+  type = "single",
+  collapsible = true,
+  defaultValue,
+  value: valueProp,
+  onValueChange,
+  className,
+  children,
+  ...props
+}: AccordionProps) {
+  const [selected, setSelected] = React.useState<string[]>(() => {
+    if (defaultValue) {
+      return Array.isArray(defaultValue) ? defaultValue : [defaultValue];
+    }
+    return [];
+  });
+
+  const activeItems =
+    valueProp !== undefined
+      ? Array.isArray(valueProp)
+        ? valueProp
+        : [valueProp]
+      : selected;
+
+  const toggleItem = React.useCallback(
+    (itemValue: string) => {
+      let next: string[];
+      if (type === "single") {
+        if (activeItems.includes(itemValue)) {
+          next = collapsible ? [] : [itemValue];
+        } else {
+          next = [itemValue];
+        }
+      } else {
+        if (activeItems.includes(itemValue)) {
+          next = activeItems.filter((v) => v !== itemValue);
+        } else {
+          next = [...activeItems, itemValue];
+        }
+      }
+
+      if (valueProp === undefined) {
+        setSelected(next);
+      }
+      onValueChange?.(type === "single" ? next[0] ?? "" : next);
+    },
+    [activeItems, type, collapsible, valueProp, onValueChange],
+  );
+
+  return (
+    <AccordionContext.Provider value={{ activeItems, toggleItem }}>
+      <div className={cn("space-y-1", className)} {...props}>
+        {children}
+      </div>
+    </AccordionContext.Provider>
+  );
+}
+
+export interface AccordionItemProps extends React.HTMLAttributes<HTMLDivElement> {
+  value: string;
+}
+
+export function AccordionItem({ value, className, children, ...props }: AccordionItemProps) {
+  const context = React.useContext(AccordionContext);
+  const isOpen = context?.activeItems.includes(value) ?? false;
+
+  return (
+    <AccordionItemContext.Provider value={{ value, isOpen }}>
+      <div className={cn("border-b", className)} {...props}>
+        {children}
+      </div>
+    </AccordionItemContext.Provider>
+  );
+}
+
+export interface AccordionTriggerProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+
+export function AccordionTrigger({ className, children, ...props }: AccordionTriggerProps) {
+  const rootContext = React.useContext(AccordionContext);
+  const itemContext = React.useContext(AccordionItemContext);
+
+  if (!rootContext || !itemContext) {
+    throw new Error("AccordionTrigger must be used within AccordionItem");
+  }
+
+  const { toggleItem } = rootContext;
+  const { value, isOpen } = itemContext;
+
+  return (
+    <h3 className="flex">
+      <button
+        type="button"
+        aria-expanded={isOpen}
+        onClick={() => toggleItem(value)}
+        className={cn(
+          "flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&[aria-expanded=true]>svg]:rotate-180",
+          className,
+        )}
+        {...props}
+      >
+        {children}
+        <ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-200" />
+      </button>
+    </h3>
+  );
+}
+
+export interface AccordionContentProps extends React.HTMLAttributes<HTMLDivElement> {}
+
+export function AccordionContent({ className, children, ...props }: AccordionContentProps) {
+  const itemContext = React.useContext(AccordionItemContext);
+  const isOpen = itemContext?.isOpen ?? false;
+
+  if (!isOpen) return null;
+
+  return (
+    <div className={cn("overflow-hidden text-sm transition-all pb-4 pt-0", className)} {...props}>
+      <div>{children}</div>
+    </div>
+  );
+}
