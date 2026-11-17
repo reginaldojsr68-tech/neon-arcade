@@ -159,7 +159,7 @@ function Index() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-mono crt-scanlines relative overflow-x-hidden selection:bg-primary selection:text-primary-foreground">
+    <div className="min-h-screen bg-background text-foreground font-sans relative overflow-x-hidden selection:bg-primary selection:text-primary-foreground">
       {/* GLOW DECORATIONS */}
       <div className="pointer-events-none fixed top-0 left-1/4 w-[500px] h-[300px] bg-primary/10 blur-[140px] rounded-full z-0" />
       <div className="pointer-events-none fixed bottom-0 right-1/4 w-[600px] h-[350px] bg-secondary/10 blur-[160px] rounded-full z-0" />
@@ -173,36 +173,36 @@ function Index() {
               <img
                 src={LOGO}
                 alt="Logo LOVX"
-                className="relative w-9 h-9 border border-primary/40 bg-background"
+                className="relative w-9 h-9 border border-primary/40 bg-background rounded-md"
               />
             </div>
-            <div>
-              <span className="text-2xl font-black tracking-widest text-primary neon flex items-center gap-2">
+            <div className="flex items-center gap-2">
+              <span className="text-xl font-display font-bold tracking-tight text-foreground flex items-center gap-2">
                 LOVX
-                <span className="text-[10px] uppercase font-normal px-1.5 py-0.5 border border-accent text-accent bg-accent/10 tracking-normal">
-                  v2.4 ARCADE
-                </span>
               </span>
+              <Badge variant="outline" className="text-[10px] font-mono border-accent/40 text-accent bg-accent/10 px-1.5 py-0.5">
+                v2.4
+              </Badge>
             </div>
           </div>
 
-          <div className="hidden md:flex items-center gap-8 text-xs text-muted-foreground uppercase tracking-widest">
-            <a href="#demo" className="hover:text-secondary transition">
-              // DEMO
+          <div className="hidden md:flex items-center gap-8 text-xs font-mono text-muted-foreground uppercase tracking-wider">
+            <a href="#demo" className="hover:text-foreground transition">
+              Simulador
             </a>
-            <a href="#recursos" className="hover:text-primary transition">
-              // RECURSOS
+            <a href="#recursos" className="hover:text-foreground transition">
+              Recursos
             </a>
-            <a href="#prints" className="hover:text-accent transition">
-              // GALERIA
+            <a href="#prints" className="hover:text-foreground transition">
+              Galeria
             </a>
-            <a href="#faq" className="hover:text-secondary transition">
-              // FAQ
+            <a href="#faq" className="hover:text-foreground transition">
+              FAQ
             </a>
           </div>
 
           <div className="flex items-center gap-4">
-            <div className="hidden sm:flex items-center gap-2 text-xs text-accent">
+            <div className="hidden sm:flex items-center gap-2 text-xs font-mono text-accent">
               <span className="w-2 h-2 rounded-full bg-accent animate-ping" />
               <span>SISTEMA ATIVO</span>
             </div>
@@ -210,45 +210,31 @@ function Index() {
               href={STORE}
               target="_blank"
               rel="noreferrer"
-              className="arcade-btn border border-primary bg-primary/10 text-primary px-5 py-2 text-sm font-bold hover:bg-primary hover:text-primary-foreground shadow-[var(--glow)] transition flex items-center gap-2"
+              className="arcade-btn border border-primary bg-primary text-primary-foreground px-4 py-2 text-xs font-semibold rounded-md hover:bg-primary/90 transition flex items-center gap-2"
             >
-              <Sparkles className="w-4 h-4" /> INSTALAR AGORA
+              <Sparkles className="w-3.5 h-3.5" /> Instalar Extensão
             </a>
           </div>
         </div>
       </header>
 
       {/* HERO SECTION */}
-      <section className="relative min-h-[90vh] flex flex-col items-center justify-center text-center px-4 pt-12 pb-20 overflow-hidden">
-        <div className="absolute bottom-0 left-0 right-0 h-[45%] grid-floor pointer-events-none" />
+      <section className="relative min-h-[85vh] flex flex-col items-center justify-center text-center px-4 pt-12 pb-20 overflow-hidden">
+        <div className="absolute bottom-0 left-0 right-0 h-[40%] grid-floor pointer-events-none" />
 
         <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
-          <Badge
-            variant="outline"
-            className="mb-6 border-secondary text-secondary bg-secondary/10 px-4 py-1.5 text-xs font-mono tracking-widest uppercase flex items-center gap-2 shadow-[var(--glow-cyan)]"
-          >
-            <Zap className="w-3.5 h-3.5 text-secondary animate-bounce" /> EXTENSÃO OFICIAL CHROME
-            PARA LOVABLE
-          </Badge>
-
-          <div className="cube mb-8">
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-secondary/40 bg-secondary/10 px-3.5 py-1 text-xs font-mono text-secondary">
+            <Zap className="w-3.5 h-3.5" /> Extensão oficial Chrome para Lovable
           </div>
 
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight leading-none uppercase">
-            PEÇA EM PORTUGUÊS. <br />
-            A <span className="text-accent neon">LOVX</span> EXECUTA.
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-display font-extrabold tracking-tight leading-none text-foreground">
+            Peça em português. <br />
+            <span className="text-primary">A LOVX executa.</span>
           </h1>
 
           <p className="mt-6 max-w-2xl text-base sm:text-lg text-muted-foreground leading-relaxed">
-            Assistente de IA integrado ao editor Lovable. Altera seu código React, gera commits no{" "}
-            <span className="text-primary font-bold">GitHub</span> e atualiza o banco de dados sem
-            que você precise programar uma linha.
+            Assistente de inteligência artificial integrado diretamente ao editor Lovable.
+            Altera seu código React, cria commits no <span className="text-foreground font-semibold">GitHub</span> e atualiza o banco de dados sem esforço.
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
@@ -256,84 +242,77 @@ function Index() {
               href={STORE}
               target="_blank"
               rel="noreferrer"
-              className="arcade-btn bg-primary text-primary-foreground px-8 py-4 font-bold text-base shadow-[var(--glow)] hover:scale-105 transition flex items-center justify-center gap-3 border border-primary"
+              className="arcade-btn bg-primary text-primary-foreground px-7 py-3.5 rounded-md font-semibold text-sm hover:bg-primary/90 transition flex items-center justify-center gap-2.5 border border-primary shadow-[var(--glow)]"
             >
-              <Sparkles className="w-5 h-5" /> ADICIONAR AO CHROME
+              <Sparkles className="w-4 h-4" /> Adicionar ao Chrome
               <ChevronRight className="w-4 h-4" />
             </a>
 
             <a
               href="#demo"
-              className="arcade-btn border border-secondary text-secondary bg-secondary/10 px-8 py-4 font-bold text-base hover:bg-secondary/20 transition flex items-center justify-center gap-2"
+              className="arcade-btn border border-border bg-card/80 text-foreground px-7 py-3.5 rounded-md font-semibold text-sm hover:bg-accent/10 hover:border-accent/50 transition flex items-center justify-center gap-2"
             >
-              <Terminal className="w-5 h-5" /> VER SIMULADOR
+              <Terminal className="w-4 h-4 text-accent" /> Ver simulador interativo
             </a>
           </div>
 
-          <div className="mt-12 flex flex-wrap justify-center items-center gap-8 text-xs text-muted-foreground border-t border-b border-border/50 py-4 w-full max-w-3xl">
-            <span className="flex items-center gap-2 text-foreground font-semibold">
-              <ShieldCheck className="w-4 h-4 text-accent" /> 100% SEGURO VIA GITHUB API
+          <div className="mt-14 flex flex-wrap justify-center items-center gap-8 text-xs text-muted-foreground border-t border-border/60 pt-6 w-full max-w-3xl">
+            <span className="flex items-center gap-2 text-foreground/90 font-medium">
+              <ShieldCheck className="w-4 h-4 text-accent" /> Integração direta via GitHub API
             </span>
-            <span className="flex items-center gap-2 text-foreground font-semibold">
-              <Cpu className="w-4 h-4 text-primary" /> SUPORTE A TS, TAILWIND & SHADCN
+            <span className="flex items-center gap-2 text-foreground/90 font-medium">
+              <Cpu className="w-4 h-4 text-primary" /> Suporte a TypeScript & Tailwind
             </span>
-            <span className="flex items-center gap-2 text-foreground font-semibold">
-              <Database className="w-4 h-4 text-secondary" /> SUPABASE AUTO MIGRATION
+            <span className="flex items-center gap-2 text-foreground/90 font-medium">
+              <Database className="w-4 h-4 text-secondary" /> Auto Migrations no Supabase
             </span>
           </div>
         </div>
       </section>
 
       {/* STATS STRIP */}
-      <section className="border-y border-primary/30 bg-card/60 backdrop-blur-md py-6 px-4">
+      <section className="border-y border-border bg-card/50 backdrop-blur-md py-6 px-4">
         <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          <div className="p-4 border border-primary/20 bg-background/50">
-            <div className="text-3xl font-black text-primary neon">10.000+</div>
-            <div className="text-xs text-muted-foreground uppercase mt-1">PROMPTS EXECUTADOS</div>
+          <div className="p-4 rounded-md border border-border/50 bg-background/50">
+            <div className="text-2xl sm:text-3xl font-display font-bold text-primary">10.000+</div>
+            <div className="text-xs text-muted-foreground mt-1">Prompts executados</div>
           </div>
-          <div className="p-4 border border-secondary/20 bg-background/50">
-            <div className="text-3xl font-black text-secondary neon">0.4s</div>
-            <div className="text-xs text-muted-foreground uppercase mt-1">RESPOSTA DA IA</div>
+          <div className="p-4 rounded-md border border-border/50 bg-background/50">
+            <div className="text-2xl sm:text-3xl font-display font-bold text-secondary">0.4s</div>
+            <div className="text-xs text-muted-foreground mt-1">Tempo de resposta médio</div>
           </div>
-          <div className="p-4 border border-accent/20 bg-background/50">
-            <div className="text-3xl font-black text-accent neon">100%</div>
-            <div className="text-xs text-muted-foreground uppercase mt-1">SINCRONIZADO NO GITHUB</div>
+          <div className="p-4 rounded-md border border-border/50 bg-background/50">
+            <div className="text-2xl sm:text-3xl font-display font-bold text-accent">100%</div>
+            <div className="text-xs text-muted-foreground mt-1">Sincronizado via Git</div>
           </div>
-          <div className="p-4 border border-primary/20 bg-background/50">
-            <div className="text-3xl font-black text-foreground">5/5 ★</div>
-            <div className="text-xs text-muted-foreground uppercase mt-1">AVALIAÇÃO NA STORE</div>
+          <div className="p-4 rounded-md border border-border/50 bg-background/50">
+            <div className="text-2xl sm:text-3xl font-display font-bold text-foreground">5/5 ★</div>
+            <div className="text-xs text-muted-foreground mt-1">Avaliação na Web Store</div>
           </div>
         </div>
       </section>
 
       {/* INTERACTIVE DEMO SIMULATOR */}
-      <section id="demo" className="py-24 px-4 max-w-5xl mx-auto relative z-10">
+      <section id="demo" className="py-20 px-4 max-w-5xl mx-auto relative z-10">
         <div className="text-center mb-10">
-          <Badge
-            variant="outline"
-            className="border-primary text-primary bg-primary/10 mb-3 px-3 py-1 text-xs"
-          >
-            TERMINAL INTERATIVO
-          </Badge>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
-            TESTE UM <span className="text-secondary neon">// PROMPT SIMULADO</span>
+          <h2 className="text-3xl sm:text-4xl font-display font-bold text-foreground">
+            Experimente um prompt simulado
           </h2>
-          <p className="text-sm text-muted-foreground mt-2">
-            Escolha uma instrução abaixo para ver como a LOVX processa e envia alterações ao seu
-            repositório.
+          <p className="text-sm text-muted-foreground mt-2 max-w-lg mx-auto">
+            Escolha uma instrução abaixo para ver como a LOVX processa e aplica alterações diretamente no seu projeto.
           </p>
         </div>
 
         {/* PROMPT SELECTOR TABS */}
-        <div className="flex flex-wrap justify-center gap-3 mb-6">
+        <div className="flex flex-wrap justify-center gap-2.5 mb-6">
           {interactivePrompts.map((p, idx) => (
             <button
               key={p.label}
               onClick={() => handleRunSim(idx)}
-              className={`px-4 py-2 text-xs font-bold uppercase transition border flex items-center gap-2 ${
+              className={`px-4 py-2 text-xs font-semibold rounded-md transition border flex items-center gap-2 ${
                 activePromptIndex === idx
-                  ? "border-accent bg-accent/20 text-accent shadow-[var(--glow-accent)]"
-                  : "border-border bg-card hover:border-accent/50 text-muted-foreground"
+                  ? "border-accent bg-accent/10 text-accent"
+                  : "border-border bg-card hover:border-border/80 text-muted-foreground"
               }`}
             >
               <Play className="w-3 h-3" /> {p.label}
@@ -342,22 +321,22 @@ function Index() {
         </div>
 
         {/* TERMINAL BOX */}
-        <div className="cyber-panel border border-secondary shadow-[var(--glow-cyan)] overflow-hidden rounded-sm">
+        <div className="cyber-panel border border-border rounded-lg overflow-hidden shadow-2xl">
           {/* TERMINAL HEADER */}
           <div className="bg-muted/80 px-4 py-3 border-b border-border flex justify-between items-center text-xs">
             <div className="flex items-center gap-2">
               <span className="w-3 h-3 rounded-full bg-destructive/80" />
               <span className="w-3 h-3 rounded-full bg-accent/80" />
               <span className="w-3 h-3 rounded-full bg-secondary/80" />
-              <span className="ml-2 font-mono text-muted-foreground">lovx-executor-v2.sh</span>
+              <span className="ml-2 font-mono text-muted-foreground">lovx-executor.ts</span>
             </div>
             <button
               onClick={() => handleCopyPrompt(currentPrompt.prompt)}
-              className="text-xs text-muted-foreground hover:text-foreground flex items-center gap-1 transition"
+              className="text-xs font-mono text-muted-foreground hover:text-foreground flex items-center gap-1 transition"
             >
               {copied ? (
                 <>
-                  <Check className="w-3 h-3 text-accent" /> COPIADO!
+                  <Check className="w-3 h-3 text-accent" /> COPIADO
                 </>
               ) : (
                 <>
@@ -368,26 +347,26 @@ function Index() {
           </div>
 
           {/* TERMINAL BODY */}
-          <div className="p-6 bg-background/95 font-mono text-sm space-y-4">
+          <div className="p-6 bg-background/95 font-mono text-xs sm:text-sm space-y-4">
             <div className="flex items-start gap-3">
               <span className="text-accent font-bold">&gt;</span>
-              <div className="flex-1 bg-card p-3 border border-border/80 text-foreground">
-                <span className="text-xs text-muted-foreground uppercase block mb-1">
-                  Prompt digitado pelo usuário:
+              <div className="flex-1 bg-card/60 p-3.5 rounded border border-border text-foreground">
+                <span className="text-[11px] font-mono text-muted-foreground block mb-1">
+                  Prompt enviado:
                 </span>
                 "{currentPrompt.prompt}"
               </div>
             </div>
 
-            <div className="space-y-2 pt-2">
-              <div className="text-xs text-secondary uppercase font-bold tracking-widest">
-                // EXECUÇÃO DA IA:
+            <div className="space-y-2.5 pt-2">
+              <div className="text-xs font-mono text-secondary font-semibold">
+                Execução do agente:
               </div>
               {currentPrompt.steps.map((step, idx) => (
                 <div
                   key={idx}
                   className={`flex items-center gap-3 transition-opacity duration-300 ${
-                    idx <= simStep ? "opacity-100" : "opacity-20"
+                    idx <= simStep ? "opacity-100" : "opacity-30"
                   }`}
                 >
                   {idx <= simStep ? (
@@ -403,11 +382,11 @@ function Index() {
             </div>
 
             {simStep >= 3 && (
-              <div className="mt-4 p-3 border border-accent/40 bg-accent/10 text-accent text-xs flex justify-between items-center animate-fade-in">
+              <div className="mt-4 p-3.5 rounded border border-accent/40 bg-accent/10 text-accent text-xs flex justify-between items-center animate-fade-in">
                 <span className="flex items-center gap-2">
-                  <Sparkles className="w-4 h-4" /> STATUS: MUDANÇA APLICADA COM SUCESSO!
+                  <Sparkles className="w-4 h-4" /> Alteração executada e sincronizada
                 </span>
-                <span className="font-bold underline">{currentPrompt.fileCreated}</span>
+                <span className="font-mono text-foreground font-semibold">{currentPrompt.fileCreated}</span>
               </div>
             )}
           </div>
@@ -416,15 +395,11 @@ function Index() {
 
       {/* SCREENSHOTS GALLERY */}
       <section id="prints" className="py-20 px-4 max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-4">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
           <div>
-            <Badge
-              variant="outline"
-              className="border-secondary text-secondary bg-secondary/10 mb-2 px-3 py-1 text-xs"
-            >
-              INTERFACE REAL
-            </Badge>
-            <h2 className="text-3xl font-bold text-secondary neon">// VEJA A LOVX EM AÇÃO</h2>
+            <h2 className="text-3xl font-display font-bold text-foreground">
+              Veja a LOVX em ação
+            </h2>
             <p className="text-muted-foreground text-sm mt-1">
               Capturas de tela reais da extensão integrada ao editor do Lovable.
             </p>
@@ -432,13 +407,15 @@ function Index() {
           <div className="flex gap-2">
             <button
               onClick={() => setSlideIndex((slideIndex - 1 + shots.length) % shots.length)}
-              className="arcade-btn border border-border px-4 py-2 hover:border-primary text-foreground"
+              className="p-2 border border-border rounded-md hover:border-primary text-foreground bg-card transition"
+              aria-label="Anterior"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={() => setSlideIndex((slideIndex + 1) % shots.length)}
-              className="arcade-btn border border-border px-4 py-2 hover:border-primary text-foreground"
+              className="p-2 border border-border rounded-md hover:border-primary text-foreground bg-card transition"
+              aria-label="Próximo"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
@@ -446,8 +423,8 @@ function Index() {
         </div>
 
         {/* MAIN DISPLAY CARD */}
-        <div className="cyber-panel border border-secondary shadow-[var(--glow-cyan)] overflow-hidden p-2 relative group">
-          <div className="relative aspect-[16/10] overflow-hidden bg-black">
+        <div className="cyber-panel border border-border rounded-xl overflow-hidden p-2 relative group">
+          <div className="relative aspect-[16/10] overflow-hidden bg-black rounded-lg">
             <img
               src={shots[slideIndex].src}
               alt={shots[slideIndex].title}
@@ -456,16 +433,16 @@ function Index() {
             <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
             <button
               onClick={() => setModalImage(shots[slideIndex].src)}
-              className="absolute top-4 right-4 bg-background/80 backdrop-blur-md p-2 border border-border text-foreground hover:text-primary transition opacity-0 group-hover:opacity-100"
+              className="absolute top-4 right-4 bg-background/80 backdrop-blur-md p-2 rounded-md border border-border text-foreground hover:text-primary transition opacity-0 group-hover:opacity-100"
               title="Expandir imagem"
             >
               <Maximize2 className="w-4 h-4" />
             </button>
             <div className="absolute bottom-6 left-6 right-6">
-              <span className="text-xs font-bold text-primary uppercase tracking-widest bg-primary/20 border border-primary px-2.5 py-1">
-                TELA {slideIndex + 1} DE {shots.length}
+              <span className="text-[11px] font-mono text-primary uppercase tracking-wider bg-primary/10 border border-primary/30 px-2.5 py-1 rounded">
+                Tela {slideIndex + 1} de {shots.length}
               </span>
-              <h3 className="text-2xl font-bold text-foreground mt-2">
+              <h3 className="text-xl sm:text-2xl font-display font-bold text-foreground mt-2">
                 {shots[slideIndex].title}
               </h3>
               <p className="text-sm text-muted-foreground">{shots[slideIndex].desc}</p>
@@ -479,10 +456,10 @@ function Index() {
             <button
               key={idx}
               onClick={() => setSlideIndex(idx)}
-              className={`relative aspect-[16/10] overflow-hidden border transition ${
+              className={`relative aspect-[16/10] overflow-hidden rounded-md border transition ${
                 idx === slideIndex
-                  ? "border-primary shadow-[var(--glow)] scale-105"
-                  : "border-border/60 opacity-50 hover:opacity-100"
+                  ? "border-primary ring-2 ring-primary/20 scale-105"
+                  : "border-border/60 opacity-60 hover:opacity-100"
               }`}
             >
               <img src={item.src} alt={item.title} className="w-full h-full object-cover" />
@@ -494,98 +471,83 @@ function Index() {
       {/* FEATURES GRID */}
       <section id="recursos" className="py-20 px-4 max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <Badge
-            variant="outline"
-            className="border-accent text-accent bg-accent/10 mb-3 px-3 py-1 text-xs"
-          >
-            TECNOLOGIA ARCADE
-          </Badge>
-          <h2 className="text-3xl sm:text-5xl font-black uppercase">
-            RECURSOS FEITOS PARA <span className="text-accent neon">DESENVOLVEDORES</span>
+          <h2 className="text-3xl sm:text-5xl font-display font-bold text-foreground">
+            Recursos projetados para criadores
           </h2>
           <p className="text-muted-foreground text-sm mt-3 max-w-xl mx-auto">
-            Tudo o que você precisa para evoluir sua aplicação Lovable em tempo recorde.
+            Tudo o que você precisa para acelerar o desenvolvimento do seu projeto Lovable.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="cyber-panel p-8 border border-accent/40 bg-card hover:border-accent hover:shadow-[var(--glow-accent)] transition duration-300 relative group">
-            <div className="w-12 h-12 border border-accent bg-accent/10 flex items-center justify-center text-accent mb-6 group-hover:scale-110 transition">
-              <MessageSquareCode className="w-6 h-6" />
+        <div className="grid md:grid-cols-3 gap-6">
+          <div className="cyber-panel p-8 rounded-xl border border-border bg-card hover:border-accent/50 transition duration-300 relative group">
+            <div className="w-10 h-10 rounded-lg border border-accent/40 bg-accent/10 flex items-center justify-center text-accent mb-5 group-hover:scale-105 transition">
+              <MessageSquareCode className="w-5 h-5" />
             </div>
-            <h3 className="text-xl font-bold text-accent mb-2">Chat no Editor</h3>
+            <h3 className="text-lg font-display font-bold text-foreground mb-2">Chat integrado no editor</h3>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Caixa de conversa nativa dentro da interface do Lovable. Digite suas ideias em
-              português e veja a IA responder com código pronto.
+              Painel lateral nativo no Lovable. Escreva o que você precisa em português e receba o código pronto e testado.
             </p>
           </div>
 
-          <div className="cyber-panel p-8 border border-primary/40 bg-card hover:border-primary hover:shadow-[var(--glow)] transition duration-300 relative group">
-            <div className="w-12 h-12 border border-primary bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition">
-              <GitBranch className="w-6 h-6" />
+          <div className="cyber-panel p-8 rounded-xl border border-border bg-card hover:border-primary/50 transition duration-300 relative group">
+            <div className="w-10 h-10 rounded-lg border border-primary/40 bg-primary/10 flex items-center justify-center text-primary mb-5 group-hover:scale-105 transition">
+              <GitBranch className="w-5 h-5" />
             </div>
-            <h3 className="text-xl font-bold text-primary mb-2">Direto no GitHub</h3>
+            <h3 className="text-lg font-display font-bold text-foreground mb-2">Sincronização no GitHub</h3>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Sem arquivos soltos. A LOVX edita seus arquivos TypeScript/React e realiza o commit e
-              push direto para a sua branch principal.
+              Edição direta de arquivos TypeScript e React com criação automática de commits e push para a sua branch main.
             </p>
           </div>
 
-          <div className="cyber-panel p-8 border border-secondary/40 bg-card hover:border-secondary hover:shadow-[var(--glow-cyan)] transition duration-300 relative group">
-            <div className="w-12 h-12 border border-secondary bg-secondary/10 flex items-center justify-center text-secondary mb-6 group-hover:scale-110 transition">
-              <Database className="w-6 h-6" />
+          <div className="cyber-panel p-8 rounded-xl border border-border bg-card hover:border-secondary/50 transition duration-300 relative group">
+            <div className="w-10 h-10 rounded-lg border border-secondary/40 bg-secondary/10 flex items-center justify-center text-secondary mb-5 group-hover:scale-105 transition">
+              <Database className="w-5 h-5" />
             </div>
-            <h3 className="text-xl font-bold text-secondary mb-2">Banco de Dados Sync</h3>
+            <h3 className="text-lg font-display font-bold text-foreground mb-2">Automação de Banco de Dados</h3>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Crie tabelas, colunas e políticas de segurança no Supabase simultaneamente com as
-              telas e componentes da sua aplicação.
+              Criação de tabelas, colunas e políticas de acesso RLS no Supabase integrados às telas do seu aplicativo.
             </p>
           </div>
         </div>
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="py-20 px-4 bg-card/40 border-y border-border">
-        <div className="max-w-5xl mx-auto text-center mb-16">
-          <Badge
-            variant="outline"
-            className="border-secondary text-secondary bg-secondary/10 mb-3 px-3 py-1 text-xs"
-          >
-            FLUXO SIMPLES
-          </Badge>
-          <h2 className="text-3xl sm:text-4xl font-bold">
-            COMO FUNCIONA EM <span className="text-secondary neon">3 PASSOS</span>
+      <section className="py-20 px-4 bg-card/30 border-y border-border">
+        <div className="max-w-5xl mx-auto text-center mb-14">
+          <h2 className="text-3xl sm:text-4xl font-display font-bold text-foreground">
+            Como funciona
           </h2>
         </div>
 
-        <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
-          <div className="p-6 border border-border bg-background relative">
-            <span className="text-5xl font-black text-muted-foreground/30 absolute top-4 right-4">
-              01
-            </span>
-            <div className="text-lg font-bold text-primary mb-2">// 1. INSTALE A EXTENSÃO</div>
-            <p className="text-sm text-muted-foreground">
-              Adicione a extensão LOVX ao seu navegador Google Chrome em poucos cliques.
+        <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-6">
+          <div className="p-6 rounded-lg border border-border bg-background">
+            <div className="w-8 h-8 rounded-full bg-primary/10 text-primary border border-primary/30 flex items-center justify-center font-mono text-xs font-bold mb-4">
+              1
+            </div>
+            <div className="text-base font-display font-bold text-foreground mb-2">Instale a Extensão</div>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Adicione a LOVX ao seu navegador Google Chrome diretamente da Web Store.
             </p>
           </div>
 
-          <div className="p-6 border border-border bg-background relative">
-            <span className="text-5xl font-black text-muted-foreground/30 absolute top-4 right-4">
-              02
-            </span>
-            <div className="text-lg font-bold text-secondary mb-2">// 2. ABRA SEU LOVABLE</div>
-            <p className="text-sm text-muted-foreground">
-              Acesse o painel do seu projeto no Lovable e o chat lateral aparecerá automaticamente.
+          <div className="p-6 rounded-lg border border-border bg-background">
+            <div className="w-8 h-8 rounded-full bg-secondary/10 text-secondary border border-secondary/30 flex items-center justify-center font-mono text-xs font-bold mb-4">
+              2
+            </div>
+            <div className="text-base font-display font-bold text-foreground mb-2">Acesse seu projeto no Lovable</div>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Abra o painel do Lovable e o assistente LOVX aparecerá na barra lateral.
             </p>
           </div>
 
-          <div className="p-6 border border-border bg-background relative">
-            <span className="text-5xl font-black text-muted-foreground/30 absolute top-4 right-4">
-              03
-            </span>
-            <div className="text-lg font-bold text-accent mb-2">// 3. DIGITE E PUBLIQUE</div>
-            <p className="text-sm text-muted-foreground">
-              Descreva em português o que precisa e veja o código ser atualizado no GitHub.
+          <div className="p-6 rounded-lg border border-border bg-background">
+            <div className="w-8 h-8 rounded-full bg-accent/10 text-accent border border-accent/30 flex items-center justify-center font-mono text-xs font-bold mb-4">
+              3
+            </div>
+            <div className="text-base font-display font-bold text-foreground mb-2">Descreva a mudança</div>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Digite seu comando e veja as alterações aplicadas e commitadas no repositório.
             </p>
           </div>
         </div>
@@ -594,94 +556,82 @@ function Index() {
       {/* FAQ SECTION */}
       <section id="faq" className="py-20 px-4 max-w-4xl mx-auto">
         <div className="text-center mb-12">
-          <Badge
-            variant="outline"
-            className="border-primary text-primary bg-primary/10 mb-3 px-3 py-1 text-xs"
-          >
-            DUVIDAS FREQUENTES
-          </Badge>
-          <h2 className="text-3xl font-bold">
-            PERGUNTAS <span className="text-primary neon">// RESPOSTAS</span>
+          <h2 className="text-3xl font-display font-bold text-foreground">
+            Perguntas Frequentes
           </h2>
         </div>
 
-        <Accordion type="single" collapsible className="w-full space-y-4">
-          <AccordionItem value="item-1" className="border border-border bg-card px-6 py-2">
-            <AccordionTrigger className="text-base font-bold hover:text-primary transition">
+        <Accordion type="single" collapsible className="w-full space-y-3">
+          <AccordionItem value="item-1" className="border border-border bg-card rounded-lg px-6 py-1">
+            <AccordionTrigger className="text-sm sm:text-base font-semibold hover:text-primary transition">
               Preciso de chave de API para usar a LOVX?
             </AccordionTrigger>
             <AccordionContent className="text-sm text-muted-foreground leading-relaxed">
-              Sim, a extensão utiliza uma chave de acesso segura para integrar com a API do GitHub
-              e com a IA do LOVX.
+              Sim, a extensão conecta de forma segura à API do GitHub e ao agente de IA da LOVX para realizar commits no seu repositório.
             </AccordionContent>
           </AccordionItem>
 
-          <AccordionItem value="item-2" className="border border-border bg-card px-6 py-2">
-            <AccordionTrigger className="text-base font-bold hover:text-secondary transition">
-              A LOVX altera repositórios existentes sem quebrar o código?
+          <AccordionItem value="item-2" className="border border-border bg-card rounded-lg px-6 py-1">
+            <AccordionTrigger className="text-sm sm:text-base font-semibold hover:text-secondary transition">
+              A LOVX altera projetos existentes sem quebrar o código?
             </AccordionTrigger>
             <AccordionContent className="text-sm text-muted-foreground leading-relaxed">
-              Sim! A LOVX lê a estrutura completa do seu projeto (componentes shadcn, rotas e estilos
-              Tailwind) para garantir que cada commit respeite os padrões atuais do projeto.
+              Sim! A LOVX analisa a estrutura do projeto (Tailwind, componentes shadcn/ui e rotas) antes de aplicar qualquer alteração.
             </AccordionContent>
           </AccordionItem>
 
-          <AccordionItem value="item-3" className="border border-border bg-card px-6 py-2">
-            <AccordionTrigger className="text-base font-bold hover:text-accent transition">
+          <AccordionItem value="item-3" className="border border-border bg-card rounded-lg px-6 py-1">
+            <AccordionTrigger className="text-sm sm:text-base font-semibold hover:text-accent transition">
               Como funciona a integração com o Supabase?
             </AccordionTrigger>
             <AccordionContent className="text-sm text-muted-foreground leading-relaxed">
-              Ao solicitar alterações de banco de dados, a LOVX gera migrations e executa comandos
-              estruturados via cliente do banco, mantendo os tipos TypeScript atualizados.
+              A LOVX cria migrations SQL estruturadas e aplica diretamente na sua instância Postgres/Supabase conectada.
             </AccordionContent>
           </AccordionItem>
 
-          <AccordionItem value="item-4" className="border border-border bg-card px-6 py-2">
-            <AccordionTrigger className="text-base font-bold hover:text-primary transition">
+          <AccordionItem value="item-4" className="border border-border bg-card rounded-lg px-6 py-1">
+            <AccordionTrigger className="text-sm sm:text-base font-semibold hover:text-primary transition">
               Posso usar em qualquer plano do Lovable?
             </AccordionTrigger>
             <AccordionContent className="text-sm text-muted-foreground leading-relaxed">
-              Sim, a extensão funciona como uma camada extra sobre o editor do navegador Chrome.
+              Sim, a extensão funciona como uma camada sobre o navegador Chrome para qualquer projeto ativo no Lovable.
             </AccordionContent>
           </AccordionItem>
         </Accordion>
       </section>
 
       {/* FINAL CALL TO ACTION */}
-      <section className="py-28 text-center px-4 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent pointer-events-none" />
-
+      <section className="py-24 text-center px-4 relative overflow-hidden">
         <div className="relative z-10 max-w-3xl mx-auto">
-          <h2 className="text-4xl sm:text-6xl font-black tracking-tight uppercase">
-            PRONTO PARA <span className="text-primary neon">ACELERAR</span>?
+          <h2 className="text-4xl sm:text-5xl font-display font-extrabold tracking-tight text-foreground">
+            Pronto para acelerar seus projetos?
           </h2>
           <p className="mt-4 text-base text-muted-foreground">
-            Instale a extensão LOVX agora mesmo no Chrome Web Store e transforme seus prompts em
-            código no GitHub.
+            Instale a extensão LOVX agora mesmo no Chrome Web Store e transforme suas ideias em código no GitHub.
           </p>
 
-          <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+          <div className="mt-8 flex justify-center">
             <a
               href={STORE}
               target="_blank"
               rel="noreferrer"
-              className="arcade-btn bg-secondary text-secondary-foreground px-10 py-4 font-bold text-lg shadow-[var(--glow-cyan)] hover:scale-105 transition flex items-center justify-center gap-3 border border-secondary"
+              className="arcade-btn bg-primary text-primary-foreground px-8 py-4 rounded-md font-semibold text-base shadow-[var(--glow)] hover:bg-primary/90 transition flex items-center justify-center gap-3 border border-primary"
             >
-              <ExternalLink className="w-5 h-5" /> ADICIONAR AO CHROME
+              <ExternalLink className="w-5 h-5" /> Adicionar ao Google Chrome
             </a>
           </div>
 
-          <div className="mt-6 text-xs text-muted-foreground">
-            Requer chave de acesso • Compatível com Chrome v110+
+          <div className="mt-6 text-xs text-muted-foreground font-mono">
+            Compatível com Google Chrome v110+
           </div>
         </div>
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-border py-8 px-6 text-center text-xs text-muted-foreground flex flex-col sm:flex-row justify-between items-center max-w-7xl mx-auto gap-4">
+      <footer className="border-t border-border py-8 px-6 text-xs text-muted-foreground flex flex-col sm:flex-row justify-between items-center max-w-7xl mx-auto gap-4">
         <div className="flex items-center gap-2">
-          <img src={LOGO} alt="LOVX" className="w-5 h-5" />
-          <span className="font-bold text-foreground">LOVX ARCADE EDITION</span>
+          <img src={LOGO} alt="LOVX" className="w-5 h-5 rounded" />
+          <span className="font-semibold text-foreground">LOVX ARCADE EDITION</span>
         </div>
         <div>© 2026 LOVX — Todos os direitos reservados</div>
         <div className="flex gap-4">
@@ -700,14 +650,14 @@ function Index() {
           <div className="relative max-w-5xl w-full">
             <button
               onClick={() => setModalImage(null)}
-              className="absolute -top-10 right-0 text-white flex items-center gap-1 text-xs"
+              className="absolute -top-10 right-0 text-white flex items-center gap-1 text-xs font-mono"
             >
-              <Minimize2 className="w-4 h-4" /> FECHAR [ESC]
+              <Minimize2 className="w-4 h-4" /> Fechar [ESC]
             </button>
             <img
               src={modalImage}
               alt="Visualização expandida"
-              className="w-full border border-secondary shadow-[var(--glow-cyan)] object-contain max-h-[85vh]"
+              className="w-full border border-border rounded-lg shadow-2xl object-contain max-h-[85vh]"
             />
           </div>
         </div>
