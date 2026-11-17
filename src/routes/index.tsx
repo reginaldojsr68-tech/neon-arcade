@@ -24,7 +24,7 @@ const games = [
 
 function Index() {
   const [i, setI] = useState(0);
-  const g = games[i];
+  const g = games[i] ?? games[0]!;
   return (
     <div className="min-h-screen bg-background text-foreground overflow-hidden font-mono">
       <nav className="flex justify-between items-center px-8 py-6">
