@@ -159,7 +159,7 @@ function Index() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans relative overflow-x-hidden selection:bg-primary selection:text-primary-foreground">
+    <div className="min-h-screen bg-background text-foreground font-sans relative overflow-x-hidden selection:bg-primary selection:text-primary-foreground" suppressHydrationWarning>
       {/* GLOW DECORATIONS */}
       <div className="pointer-events-none fixed top-0 left-1/4 w-[500px] h-[300px] bg-primary/10 blur-[140px] rounded-full z-0" />
       <div className="pointer-events-none fixed bottom-0 right-1/4 w-[600px] h-[350px] bg-secondary/10 blur-[160px] rounded-full z-0" />
