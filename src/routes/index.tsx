@@ -134,6 +134,12 @@ function Index() {
   const [copied, setCopied] = useState(false);
   const [modalImage, setModalImage] = useState<string | null>(null);
 
+  useEffect(() => {
+    if (typeof window !== "undefined" && !window.location.hash) {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    }
+  }, []);
+
   const currentPrompt = interactivePrompts[activePromptIndex];
 
   const handleRunSim = (index: number) => {
