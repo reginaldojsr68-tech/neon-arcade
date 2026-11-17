@@ -164,7 +164,7 @@ function Index() {
       <div className="pointer-events-none fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-primary/10 blur-[150px] rounded-full z-0" />
 
       {/* NAVBAR */}
-      <header className="sticky top-0 z-50 border-b border-border/80 cyber-panel px-4 sm:px-6 py-3.5 backdrop-blur-md">
+      <header className="sticky top-0 z-50 border-b border-border/80 cyber-panel px-4 sm:px-6 py-3.5 backdrop-blur-md transition-all duration-300">
         <div className="max-w-6xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-2.5">
