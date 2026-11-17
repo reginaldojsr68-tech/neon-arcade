@@ -73,47 +73,86 @@
 }
 
 :root {
-  --radius: 0;
-  --background: oklch(0.13 0.04 290);
-  --foreground: oklch(0.96 0.02 300);
-  --card: oklch(0.18 0.05 290);
-  --card-foreground: oklch(0.96 0.02 300);
-  --popover: oklch(0.18 0.05 290);
-  --popover-foreground: oklch(0.96 0.02 300);
-  --primary: oklch(0.7 0.3 340);
-  --primary-foreground: oklch(0.13 0.04 290);
-  --secondary: oklch(0.85 0.17 200);
-  --secondary-foreground: oklch(0.13 0.04 290);
-  --muted: oklch(0.25 0.05 290);
-  --muted-foreground: oklch(0.7 0.05 300);
-  --accent: oklch(0.88 0.2 130);
-  --accent-foreground: oklch(0.13 0.04 290);
+  --radius: 2px;
+  --background: oklch(0.1 0.05 285);
+  --foreground: oklch(0.97 0.02 300);
+  --card: oklch(0.15 0.06 285);
+  --card-foreground: oklch(0.97 0.02 300);
+  --popover: oklch(0.15 0.06 285);
+  --popover-foreground: oklch(0.97 0.02 300);
+  --primary: oklch(0.68 0.31 338);
+  --primary-foreground: oklch(0.1 0.05 285);
+  --secondary: oklch(0.82 0.18 198);
+  --secondary-foreground: oklch(0.1 0.05 285);
+  --muted: oklch(0.2 0.06 285);
+  --muted-foreground: oklch(0.72 0.04 290);
+  --accent: oklch(0.87 0.22 135);
+  --accent-foreground: oklch(0.1 0.05 285);
   --destructive: oklch(0.6 0.25 27);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.3 0.06 290);
-  --input: oklch(0.3 0.06 290);
-  --ring: oklch(0.7 0.3 340);
-  --glow: 0 0 30px oklch(0.7 0.3 340 / 0.7);
-  --glow-accent: 0 0 25px oklch(0.88 0.2 130 / 0.5);
+  --border: oklch(0.28 0.07 285);
+  --input: oklch(0.22 0.06 285);
+  --ring: oklch(0.68 0.31 338);
+  --glow: 0 0 25px oklch(0.68 0.31 338 / 0.65);
+  --glow-cyan: 0 0 25px oklch(0.82 0.18 198 / 0.65);
+  --glow-accent: 0 0 25px oklch(0.87 0.22 135 / 0.55);
 }
 
-.neon { text-shadow: 0 0 12px currentColor; }
-.grid-floor {
-  background-image: linear-gradient(var(--primary) 1px, transparent 1px), linear-gradient(90deg, var(--primary) 1px, transparent 1px);
-  background-size: 50px 50px;
-  transform: perspective(400px) rotateX(60deg);
-  transform-origin: bottom;
-  opacity: 0.35;
-  mask-image: linear-gradient(to top, black, transparent);
-  animation: floor 2s linear infinite;
+.neon { text-shadow: 0 0 10px currentColor, 0 0 25px currentColor; }
+.neon-subtle { text-shadow: 0 0 6px currentColor; }
+
+.crt-scanlines {
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  background-size: 100% 4px, 6px 100%;
 }
-@keyframes floor { to { background-position: 0 50px; } }
-.cube { position: relative; width: 100px; height: 100px; transform-style: preserve-3d; animation: spin 10s linear infinite; }
-.cube div { position: absolute; inset: 0; border: 2px solid var(--secondary); background: color-mix(in oklab, var(--primary) 15%, transparent); box-shadow: 0 0 20px var(--secondary) inset; }
-.cube div:nth-child(1){transform:translateZ(50px)}.cube div:nth-child(2){transform:rotateY(180deg) translateZ(50px)}
-.cube div:nth-child(3){transform:rotateY(90deg) translateZ(50px)}.cube div:nth-child(4){transform:rotateY(-90deg) translateZ(50px)}
-.cube div:nth-child(5){transform:rotateX(90deg) translateZ(50px)}.cube div:nth-child(6){transform:rotateX(-90deg) translateZ(50px)}
+
+.cyber-panel {
+  background: rgba(22, 17, 36, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid oklch(0.35 0.1 290);
+  box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.02);
+}
+
+.cyber-card-pink {
+  border: 1px solid var(--primary);
+  box-shadow: var(--glow);
+}
+
+.cyber-card-cyan {
+  border: 1px solid var(--secondary);
+  box-shadow: var(--glow-cyan);
+}
+
+.cyber-card-accent {
+  border: 1px solid var(--accent);
+  box-shadow: var(--glow-accent);
+}
+
+.grid-floor {
+  background-image: linear-gradient(var(--primary) 1px, transparent 1px), linear-gradient(90deg, var(--secondary) 1px, transparent 1px);
+  background-size: 40px 40px;
+  transform: perspective(500px) rotateX(65deg);
+  transform-origin: bottom;
+  opacity: 0.28;
+  mask-image: linear-gradient(to top, black 20%, transparent 95%);
+  animation: floor 1.8s linear infinite;
+}
+@keyframes floor { to { background-position: 0 40px; } }
+
+.cube { position: relative; width: 80px; height: 80px; transform-style: preserve-3d; animation: spin 12s linear infinite; }
+.cube div { position: absolute; inset: 0; border: 2px solid var(--secondary); background: color-mix(in oklab, var(--primary) 20%, transparent); box-shadow: 0 0 25px var(--secondary) inset; }
+.cube div:nth-child(1){transform:translateZ(40px)}.cube div:nth-child(2){transform:rotateY(180deg) translateZ(40px)}
+.cube div:nth-child(3){transform:rotateY(90deg) translateZ(40px)}.cube div:nth-child(4){transform:rotateY(-90deg) translateZ(40px)}
+.cube div:nth-child(5){transform:rotateX(90deg) translateZ(40px)}.cube div:nth-child(6){transform:rotateX(-90deg) translateZ(40px)}
 @keyframes spin { to { transform: rotateX(360deg) rotateY(360deg); } }
+
+.arcade-btn {
+  position: relative;
+  transition: all 0.15s ease;
+}
+.arcade-btn:active {
+  transform: translateY(2px);
+}
 
 @layer base {
   * {
