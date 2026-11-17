@@ -101,55 +101,55 @@
   --glow-accent: 0 0 20px oklch(0.82 0.2 150 / 0.35);
 }
 
-.neon { text-shadow: 0 0 12px currentColor; }
-.neon-subtle { text-shadow: 0 0 6px currentColor; }
-
 .cyber-panel {
-  background: rgba(20, 22, 32, 0.75);
+  background: rgba(18, 20, 29, 0.85);
   backdrop-filter: blur(16px);
-  border: 1px solid oklch(0.26 0.03 260);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
-}
-
-.cyber-card-pink {
-  border: 1px solid var(--primary);
-  box-shadow: var(--glow);
-}
-
-.cyber-card-cyan {
-  border: 1px solid var(--secondary);
-  box-shadow: var(--glow-cyan);
-}
-
-.cyber-card-accent {
-  border: 1px solid var(--accent);
-  box-shadow: var(--glow-accent);
+  border: 1px solid oklch(0.24 0.02 260);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
 }
 
 .grid-floor {
-  background-image: linear-gradient(var(--primary) 1px, transparent 1px), linear-gradient(90deg, var(--secondary) 1px, transparent 1px);
-  background-size: 40px 40px;
-  transform: perspective(500px) rotateX(65deg);
+  background-image: linear-gradient(var(--primary) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 48px 48px;
+  transform: perspective(600px) rotateX(60deg);
   transform-origin: bottom;
-  opacity: 0.28;
-  mask-image: linear-gradient(to top, black 20%, transparent 95%);
-  animation: floor 1.8s linear infinite;
+  opacity: 0.12;
+  mask-image: linear-gradient(to top, black 20%, transparent 90%);
+  animation: floor 4s linear infinite;
 }
-@keyframes floor { to { background-position: 0 40px; } }
+@keyframes floor { to { background-position: 0 48px; } }
 
-.cube { position: relative; width: 80px; height: 80px; transform-style: preserve-3d; animation: spin 12s linear infinite; }
-.cube div { position: absolute; inset: 0; border: 2px solid var(--secondary); background: color-mix(in oklab, var(--primary) 20%, transparent); box-shadow: 0 0 25px var(--secondary) inset; }
-.cube div:nth-child(1){transform:translateZ(40px)}.cube div:nth-child(2){transform:rotateY(180deg) translateZ(40px)}
-.cube div:nth-child(3){transform:rotateY(90deg) translateZ(40px)}.cube div:nth-child(4){transform:rotateY(-90deg) translateZ(40px)}
-.cube div:nth-child(5){transform:rotateX(90deg) translateZ(40px)}.cube div:nth-child(6){transform:rotateX(-90deg) translateZ(40px)}
-@keyframes spin { to { transform: rotateX(360deg) rotateY(360deg); } }
+.interactive-card {
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.interactive-card:hover {
+  transform: translateY(-2px);
+  border-color: oklch(0.35 0.04 260);
+}
 
 .arcade-btn {
-  position: relative;
-  transition: all 0.15s ease;
+  transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.arcade-btn:hover {
+  transform: translateY(-1px);
 }
 .arcade-btn:active {
-  transform: translateY(2px);
+  transform: translateY(1px);
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .grid-floor,
+  .animate-spin,
+  .animate-pulse,
+  .animate-fade-in {
+    animation: none !important;
+    transition: none !important;
+  }
+  .interactive-card:hover,
+  .arcade-btn:hover {
+    transform: none !important;
+  }
 }
 
 @layer base {
